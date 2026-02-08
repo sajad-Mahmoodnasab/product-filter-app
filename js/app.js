@@ -1,7 +1,12 @@
 'use strict';
 const searchInput = document.getElementById('search-input');
+const priceButton = document
+  .getElementById('search-price')
+  .querySelector('button ');
+
 const products = document.querySelectorAll('.prouduct-item');
 const buttons = document.querySelectorAll('.filter');
+
 const searchHandler = event => {
   const searchValue = event.target.value.toLowerCase().trim();
   products.forEach(product => {
@@ -39,3 +44,9 @@ const showHandler = event => {
 buttons.forEach(button => {
   button.addEventListener('click', showHandler);
 });
+const priceButtonHandler = event => {
+  const searchPrice = event.target.parentElement.children[0].value;
+  console.log(searchPrice);
+};
+
+priceButton.addEventListener('click', priceButtonHandler);
