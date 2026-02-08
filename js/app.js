@@ -18,7 +18,6 @@ const searchHandler = event => {
     }
   });
 };
-searchInput.addEventListener('keyup', searchHandler);
 const changeClass = filter => {
   buttons.forEach(button => {
     button.dataset.filter === filter
@@ -41,9 +40,6 @@ const showHandler = event => {
   });
 };
 
-buttons.forEach(button => {
-  button.addEventListener('click', showHandler);
-});
 const priceButtonHandler = event => {
   const searchPrice = +event.target.parentElement.children[0].value;
   products.forEach(product => {
@@ -59,4 +55,14 @@ const priceButtonHandler = event => {
   });
 };
 
-priceButton.addEventListener('click', priceButtonHandler);
+const start = start => {
+  buttons.forEach(button => {
+    button.addEventListener('click', showHandler);
+  });
+
+  searchInput.addEventListener('keyup', searchHandler);
+
+  priceButton.addEventListener('click', priceButtonHandler);
+};
+
+window.addEventListener('load', start);
