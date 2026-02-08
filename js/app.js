@@ -45,8 +45,18 @@ buttons.forEach(button => {
   button.addEventListener('click', showHandler);
 });
 const priceButtonHandler = event => {
-  const searchPrice = event.target.parentElement.children[0].value;
-  console.log(searchPrice);
+  const searchPrice = +event.target.parentElement.children[0].value;
+  products.forEach(product => {
+    const productPrice = product.children[2].innerText;
+    const price = +productPrice.split(' ')[1];
+    if (!searchPrice) {
+      product.style.display = 'block';
+    } else {
+      searchPrice === price
+        ? (product.style.display = 'block')
+        : (product.style.display = 'none');
+    }
+  });
 };
 
 priceButton.addEventListener('click', priceButtonHandler);
