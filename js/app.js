@@ -16,9 +16,12 @@ const searchHandler = event => {
 searchInput.addEventListener('keyup', searchHandler);
 const showHandler = even => {
     const filter = even.target.dataset.filter;
-    
+    products.forEach((product) => {
+        const category = product.dataset.category
+        
+    })
 };
 
 buttons.forEach((button) => {
-    filter.addEventListener('click',showHandler)
+    button.addEventListener('click',showHandler)
 })
