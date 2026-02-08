@@ -18,7 +18,11 @@ const showHandler = even => {
     const filter = even.target.dataset.filter;
     products.forEach((product) => {
         const category = product.dataset.category
-        
+        if (filter === 'all') {
+            product.style.display='block'
+        } else {
+            filter === category ? product.style.display = 'block':product.style.display='none'
+        }
     })
 };
 
