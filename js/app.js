@@ -14,18 +14,28 @@ const searchHandler = event => {
   });
 };
 searchInput.addEventListener('keyup', searchHandler);
-const showHandler = even => {
-    const filter = even.target.dataset.filter;
-    products.forEach((product) => {
-        const category = product.dataset.category
-        if (filter === 'all') {
-            product.style.display='block'
-        } else {
-            filter === category ? product.style.display = 'block':product.style.display='none'
-        }
-    })
+const changeClass = filter => {
+  buttons.forEach(button => {
+    button.dataset.filter === filter
+      ? button.classList.add('selected')
+      : button.classList.remove('selected');
+  });
+};
+const showHandler = event => {
+  const filter = event.target.dataset.filter;
+  changeClass(filter);
+  products.forEach(product => {
+    const category = product.dataset.category;
+    if (filter === 'all') {
+      product.style.display = 'block';
+    } else {
+      filter === category
+        ? (product.style.display = 'block')
+        : (product.style.display = 'none');
+    }
+  });
 };
 
-buttons.forEach((button) => {
-    button.addEventListener('click',showHandler)
-})
+buttons.forEach(button => {
+  button.addEventListener('click', showHandler);
+});
